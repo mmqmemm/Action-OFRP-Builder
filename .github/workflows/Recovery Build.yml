@@ -60,11 +60,6 @@ jobs:
 
     - name: Initialize workspace
       run: |
-        sudo apt install python2 -y
-        sudo apt-get remove python3
-        sudo apt-get remove --auto-remove python3
-        sudo apt-get purge --auto-remove python3
-        sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 1
         mkdir workspace
         cd workspace
         echo "workspace-folder=$(pwd)" >> $GITHUB_OUTPUT
@@ -111,6 +106,11 @@ jobs:
 
     - name: Building recovery
       run: |
+        sudo apt install python2 -y
+        sudo apt-get remove python3 -y
+        sudo apt-get remove --auto-remove python3 -y
+        sudo apt-get purge --auto-remove python3 -y
+        sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 1
         cd ${{ steps.pwd.outputs.workspace-folder }}/fox_${{ github.event.inputs.MANIFEST_BRANCH }}
         set +e
         source build/envsetup.sh
