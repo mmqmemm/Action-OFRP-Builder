@@ -85,7 +85,7 @@ jobs:
         cd /home/runner/work/Action-OFRP-Builder/Action-OFRP-Builder/workspace/fox_9.0/build/tools
         rm -r check_radio_versions.py
         wget -O check_radio_versions.py https://github.com/Ngtc233/Action-OFRP-Builder/releases/download/114/check_radio_versions_new-bd8ead15b91754887ac3709b69721c70.py
-        chmon +x check_radio_versions.py
+        chmod +x check_radio_versions.py
       working-directory: ${{ steps.pwd.outputs.workspace-folder }}
 
     - name: Clone device tree
